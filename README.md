@@ -68,3 +68,47 @@
   "firstName": "Artem"
 }
 ```
+
+## Условие
+
+### Данные
+
+```json
+{
+  "firstName": "Artem",
+}
+```
+
+### Модификатор
+
+```json
+{
+  "modifications": [
+    {
+      "selector": "$.firstName",
+      "method": "if",
+      "true": [
+        {
+          "selector": "$",
+          "method": "addProp('lastName', 'Mangilev')"
+        }
+      ],
+      "false": [
+        {
+          "selector": "$.firstName",
+          "method": "delete"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Результат
+
+```json
+{
+  "firstName": "Artem",
+  "lastName": "Mangilev"
+}
+```
