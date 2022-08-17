@@ -38,7 +38,7 @@
 }
 ```
 
-### Удаление полей
+## Удаление полей
 
 ### Данные
 
@@ -67,5 +67,42 @@
 ```json
 {
   "firstName": "Artem"
+}
+```
+
+### Создание вложенности
+
+### Данные
+
+```json
+{
+  "data": "hello world"
+}
+```
+
+### Модификатор
+
+```json
+{
+  "modifications": [
+    {
+      "selector": "$.data",
+      "method": "rename",
+      "arguments": ["newData"]
+    },
+    {
+      "selector": "$",
+      "method": "wrapWithObject",
+      "arguments": ["wrapper"]
+    }
+  ]
+}
+```
+
+```json
+{
+  "wrapper": {
+    "newData": "hello world"
+  }
 }
 ```
