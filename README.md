@@ -70,7 +70,7 @@
 }
 ```
 
-### Создание вложенности
+## Создание вложенности
 
 ### Данные
 
@@ -99,6 +99,8 @@
 }
 ```
 
+### Результат
+
 ```json
 {
   "wrapper": {
@@ -106,3 +108,62 @@
   }
 }
 ```
+
+## Условие
+
+### Данные
+
+```json
+{
+  "firstPerson": "Andrew",
+  "secondPerson": "Andrew"
+}
+```
+
+### Модификатор
+
+```json
+{
+  "modifications": [
+    {
+      "method": "if",
+      "arguments": [
+        {
+          "method": "equals",
+          "arguments": [
+            {
+              "method": "select",
+              "arguments": ["$.firstPerson"]
+            },
+            {
+              "method": "select",
+              "arguments": ["$.secondPerson"]
+            }, 
+          ]
+        },
+        {
+          "selector": "$"
+          "method": "addProp",
+          "arguments": ["isSamePerson", true]
+        },
+        {
+          "selector": "$"
+          "method": "addProp",
+          "arguments": ["isSamePerson", false]
+        },
+      ]
+    }
+  ]
+}
+```
+
+### Результат
+
+```json
+{
+  "firstPerson": "Andrew",
+  "secondPerson": "Andrew",
+  "isSamePerson": true
+}
+```
+
