@@ -167,3 +167,51 @@
 }
 ```
 
+## Фильтрация
+
+### Данные
+
+```json
+{
+  "cars": [
+    { "brand": "tesla", "model": "model s" },
+    { "brand": "tesla", "model": "model x" },
+    { "brand": "BMW", "model": "x5" },
+  ]
+}
+```
+
+### Модификатор
+
+```json
+{
+  "modifications": [
+    {
+      "selector": "$.cars",
+      "method": "filter",
+      "arguments": [
+        {
+          "method": "equals",
+          "arguments": [
+            {
+              "method": "select",
+              "arguments": ["$item.brand"]
+            },
+            "tesla"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Результат
+```json
+{
+  "cars": [
+    { "brand": "tesla", "model": "model s" },
+    { "brand": "tesla", "model": "model x" }
+  ]
+}
+```
