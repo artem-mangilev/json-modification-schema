@@ -215,3 +215,57 @@
   ]
 }
 ```
+
+## Интерполяция
+
+### Данные
+
+```json
+{
+  "numbers": [1, 2, 3, 4]
+}
+```
+
+### Модификатор
+
+```json
+{
+  "modifications" [
+    {
+      "selector": "$.numbers",
+      "method": "template",
+      "arguments": [
+        {
+          "one": "{{ one }}",
+          "two": "{{ two }}",
+          "three": "{{ three }}"
+        },
+        {
+          "one": {
+            "method": "select",
+            "arguments": ["$.numbers[0]"]
+          },
+          "two": {
+            "method": "select",
+            "arguments": ["$.numbers[1]"]
+          },
+          "three": {
+            "method": "select",
+            "arguments": ["$.numbers[2]"]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Результат
+
+```json
+{
+  "one": 1,
+  "two": 2,
+  "three": 3
+}
+```
