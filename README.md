@@ -216,6 +216,49 @@
 }
 ```
 
+## Маппинг массива
+
+### Данные
+
+```json
+{
+  "numbers": [1, 2, 3, 4]
+}
+```
+
+### Модификатор
+
+```json
+{
+  "modifications": [
+    {
+      "selector": "$.numbers",
+      "method": "map",
+      "arguments": [
+        {
+          "method": "*",
+          "arguments": [
+            {
+              "method": "select",
+              "arguments": ["$item"]
+            },
+            2
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Результат
+
+```json
+{
+  "numbers": [2, 4, 6, 8]
+}
+```
+
 ## Интерполяция
 
 ### Данные
@@ -230,7 +273,7 @@
 
 ```json
 {
-  "modifications" [
+  "modifications": [
     {
       "selector": "$.numbers",
       "method": "template",
